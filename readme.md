@@ -15,3 +15,4 @@ Todo:
 
 - User Profile show + edit
 - Uploading avatar
+- Add forbidden user names

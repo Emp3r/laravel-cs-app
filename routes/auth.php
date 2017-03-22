@@ -17,7 +17,8 @@ Route::get('heslo/reset/{token}', 'Auth\ResetPasswordController@showResetForm')-
 Route::post('heslo/reset', 'Auth\ResetPasswordController@reset');
 
 // User Profile & Management Routes
-Route::get('uzivatel/{user}', 'UsersController@show')->name('user.profile');
 Route::get('uzivatel/nastaveni', 'UsersController@edit')->name('settings');
 Route::get('uzivatel/nastaveni/email', 'UsersController@editEmail')->name('settings.email');
 Route::get('uzivatel/nastaveni/heslo', 'UsersController@editPassword')->name('settings.password');
+Route::get('uzivatel/{user}', 'UsersController@show')->name('user.profile');
+Route::put('uzivatel/{user}', 'UsersController@update')->name('user.update');

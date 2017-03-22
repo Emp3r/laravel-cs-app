@@ -23,4 +23,17 @@ class UserRole extends Model
         return $this->hasMany('App\User', 'role_id');
     }
 
+
+
+    // Cannot delete any UserRole, ok?
+    public function delete() {
+        return false;
+    }
+    static function destroy($ids) {
+        return false;
+    }
+    public function forceDelete() {
+        return false;
+    }
+
 }

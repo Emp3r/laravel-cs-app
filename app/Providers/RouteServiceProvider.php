@@ -23,7 +23,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Get User by slug in the URL
+        Route::bind('user', function($value) {
+            return \App\User::where('slug', $value)->first();
+        });
 
         parent::boot();
     }

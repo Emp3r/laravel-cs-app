@@ -2,28 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     /**
-     * Display the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Create a new UsersController instance and set middlewares.
+     * @return void
      */
-    public function show($id)
+    public function __construct()
     {
-        //
+        $this->middleware('auth')->except('show');
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @param  int  $id
+     * Display a profile page of the specified user.
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show(User $user)
     {
-        //
+        return view('user.show', compact('user'));
+    }
+
+    /**
+     * Show the form for editing the logged user.
+     * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        $user = Auth::user();
+
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -37,13 +49,4 @@ class UsersController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
