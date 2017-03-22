@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\UserRole;
 use App\Mail\VerifyEmail;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
@@ -14,7 +15,6 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
@@ -23,7 +23,6 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
     protected $hidden = [
@@ -32,8 +31,17 @@ class User extends Authenticatable
 
 
     /**
-     * Boot the model.
-     *
+     * Every user has one of roles.
+     * @return void
+     */
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class);
+    }
+
+
+    /**
+     * Boot the model. When creating instance, add a token for email verification.
      * @return void
      */
     public static function boot()
@@ -45,8 +53,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Confirm the user.
-     *
+     * Confirm the users email address.
      * @return void
      */
     public function confirmEmail()
@@ -58,7 +65,6 @@ class User extends Authenticatable
 
     /**
      * Re-send the e-mail verifiacion (if not verified from welcome mail).
-     *
      * @return void
      */
     public function sendEmailVerification()
@@ -69,7 +75,6 @@ class User extends Authenticatable
 
     /**
      * Send the password reset notification.
-     *
      * @param  string  $token
      * @return void
      */
