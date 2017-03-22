@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\UserRole;
 use App\Mail\VerifyEmail;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
@@ -36,7 +35,7 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->belongsTo(UserRole::class);
+        return $this->belongsTo('App\UserRole');
     }
 
 

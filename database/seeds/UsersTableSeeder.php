@@ -12,19 +12,18 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => 'a@a.a',
-            'name' => 'admin',
+            'email' => 'admin@'.str_replace(['.', ','], '', strtolower(config('app.name'))).'.cz',
+            'name' => 'Page Admin',
             'slug' => 'admin',
+            'verified' => true,
+            'role_id' => 3,
             'password' => bcrypt('root'),
+            'created_at' => Carbon\Carbon::now(),
+            'updated_at' => Carbon\Carbon::now(),
         ]);
 
-        DB::table('users')->insert([
-            'email' => '1@a.a',
-            'name' => '1',
-            'slug' => '1',
-            'verified' => '1',
-            'password' => bcrypt('ahojoj'),
-        ]);
+        factory('App\User', 2)->create();
+
 
     }
 }
