@@ -7,11 +7,9 @@ obdrželi jsme žádost o resetování hesla k vašemu účtu.
 Nastavit nové heslo
 @endcomponent
 
-
 @component('mail::panel')
 Pokud jste si nevyžádali resetování hesla, není nutné na tuto zprávu reagovat.
 @endcomponent
-
 
 Děkujeme,<br>
 tým {{ config('app.name') }}

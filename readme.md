@@ -7,11 +7,11 @@ Implements:
 - User e-mail verification
 - Enhanced User model
 - Customized e-mail templates
-- Translated stuff
+- Translated validation error messages
+- Translated other stuff
 - helpers.php for global functions
 
 Todo:
 
-- Translate validation error messages
 - User Profile show + edit
 - Uploading avatar

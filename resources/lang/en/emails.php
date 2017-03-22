@@ -2,7 +2,10 @@
 
 return [
 
-    'subject_verify' => 'Welcome & Verify Email',
-    'subject_reset_password' => 'Reset Password',
+    'subject' => [
+        'welcome' => 'Welcome to '.config('app.name').'!',
+        'verify_email' => 'Verify your email adress',
+        'reset_password' => 'Reset Password',
+    ],
 
 ];

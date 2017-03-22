@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyEmail extends Mailable
+class Welcome extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,9 +32,9 @@ class VerifyEmail extends Mailable
      */
     public function build()
     {
-        $this->subject(Lang::get('emails.subject.verify_email'));
+        $this->subject(Lang::get('emails.subject.welcome'));
 
-        return $this->markdown('emails.verify-email')
+        return $this->markdown('emails.welcome')
             ->with('user', $this->user);
     }
 }

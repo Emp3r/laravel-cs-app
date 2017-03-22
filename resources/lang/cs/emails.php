@@ -2,7 +2,10 @@
 
 return [
 
-    'subject_verify' => 'Vítejte na '.config('app.name').'!',
-    'subject_reset_password' => 'Zapomenuté heslo',
+    'subject' => [
+        'welcome' => 'Vítejte na '.config('app.name').'!',
+        'verify_email' => 'Ověření e-mailové adresy na '.config('app.name'),
+        'reset_password' => 'Zapomenuté heslo',
+    ],
 
 ];

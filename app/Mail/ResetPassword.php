@@ -37,9 +37,9 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        $this->subject(Lang::get('emails.subject_reset_password'));
+        $this->subject(Lang::get('emails.subject.reset_password'));
 
-        return $this->markdown('emails.password-reset')
+        return $this->markdown('emails.reset-password')
             ->with('token', $this->token);
     }
 }
