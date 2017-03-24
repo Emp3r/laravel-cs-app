@@ -100,9 +100,18 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required'   => 'Zadejte e-mailovou adresu.',
+            'email'      => 'E-mailová adresa je ve špatném formátu.',
+            'unique'     => 'Tuto e-mailovou adresu už tu někdo používá.',
+            'confirmed'  => 'Kontrolní adresa se neshoduje s tou první.',
         ],
+        'name' => [
+            'required' => 'Jméno je nutné vyplnit.',
+            'min' => 'Jméno musí mít alespoň :min znaky.',
+            'max' => 'Jméno nesmí mít více než :max znaků.',
+        ],
+
     ],
 
     /*

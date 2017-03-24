@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'slug' => 'required|max:10|alpha_dash|unique:users,slug,'.$this->id.'|not_in:'.Lang::get('validation.forbidden_names'),
+            'slug' => 'required|min:2|max:10|alpha_dash|unique:users,slug,'.$this->id.'|not_in:'.Lang::get('validation.forbidden_names'),
             'bio' => 'max:140',
         ];
     }
@@ -42,9 +42,8 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Jméno je nutné vyplnit.',
-            'name.max' => 'Jméno nesmí mít více než :max znaků.',
             'slug.required' => 'Adresu profilu je nutné vyplnit.',
+            'slug.min' => 'Adresa profilu musí mít alespoň :min znaky.',
             'slug.max' => 'Adresa profilu nesmí mít více než :max znaků.',
             'slug.alpha_dash' => 'Můžete použít pouze písmena, čísla a pomlčku.',
             'slug.unique' => 'Takto nazvaná adresa už je obsazená.',

@@ -54,15 +54,10 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'email' => 'required|email|unique:users',
-            'name' => 'required|max:127',
+            'name' => 'required|min:4|max:127',
             'slug' => 'unique:users|not_in:'.Lang::get('validation.forbidden_names'),
             'password' => 'required|min:6|confirmed',
         ], [
-            'email.required' => 'E-mailovou adresu je nutné vyplnit.',
-            'email.email' => 'E-mailová adresa je ve špatném formátu.',
-            'email.unique' => 'Tuto e-mailovou adresu už tu někdo používá.',
-            'name.required' => 'Jméno je nutné vyplnit.',
-            'name.max' => 'Jméno nesmí mít více než :max znaků.',
             'slug.unique' => 'Zvolte jiné jméno, později ho můžete přenastavit.',
             'slug.not_in' => 'Toto jméno je zakázané.',
             'password.required' => 'Zadejte své budoucí heslo.',

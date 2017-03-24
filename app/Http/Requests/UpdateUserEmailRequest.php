@@ -30,19 +30,4 @@ class UpdateUserEmailRequest extends FormRequest
             'email' => 'required|email|confirmed|unique:users,email,'.$this->id,
         ];
     }
-
-    /**
-    * Get the error messages for the defined validation rules.
-    *
-    * @return array
-    */
-    public function messages()
-    {
-        return [
-            'email.required' => 'E-mail je nutné vyplnit.',
-            'email.email' => 'E-mailová adresa je ve špatném formátu.',
-            'email.confirmed' => 'Kontrolní adresa se neshoduje s tou první.',
-            'email.unique' => 'Tuto e-mailovou adresu už tu někdo používá.',
-        ];
-    }
 }
