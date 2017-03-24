@@ -48,10 +48,11 @@
                                     <span class="help-block">
                                         <strong>{{ $errors->first('bio') }}</strong>
                                     </span>
+                                @else
+                                    <span class="help-block helper-bio">
+                                        Maximálně <span>140</span> znaků
+                                    </span>
                                 @endif
-                                <span class="help-block helper-bio">
-                                    Zbývá <span>140</span> znaků
-                                </span>
                             </div>
                         </div>
 

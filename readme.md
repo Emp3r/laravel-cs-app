@@ -6,13 +6,10 @@ Implements:
 
 - User e-mail verification
 - Enhanced User model
-- User profile show + edit (with template files)
+- User avatar
+- User profile show + full edit (with template files)
 - Customized e-mail templates
 - Translated validation error messages
 - Translated other stuff
+- Forbidden usernames in lang files
 - helpers.php for global functions
-
-Todo:
-
-- Uploading avatar
-- Add forbidden user names

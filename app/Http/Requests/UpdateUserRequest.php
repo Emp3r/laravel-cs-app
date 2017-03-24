@@ -49,7 +49,7 @@ class UpdateUserRequest extends FormRequest
             'slug.alpha_dash' => 'Můžete použít pouze písmena, čísla a pomlčku.',
             'slug.unique' => 'Takto nazvaná adresa už je obsazená.',
             'slug.not_in' => 'Takto nazvaná adresa je zakázaná.',
-            'bio.max' => 'Povídání nesmí přesáhnout 140 znaků.',
+            'bio.max' => 'Povídání nesmí přesáhnout :max znaků.',
         ];
     }
 
