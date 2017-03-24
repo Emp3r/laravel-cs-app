@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateUserEmailRequest;
+use App\Http\Requests\UpdateUserPasswordRequest;
 
 class UsersController extends Controller
 {
@@ -27,26 +29,82 @@ class UsersController extends Controller
         return view('user.show', compact('user'));
     }
 
+
     /**
      * Show the form for editing the logged user.
      * @return \Illuminate\Http\Response
      */
     public function edit()
     {
-        $user = Auth::user();
+        return view('user.edit')->with('user', Auth::user());
+    }
 
-        return view('user.edit', compact('user'));
+    /**
+     * Show the email change form for the logged user.
+     * @return \Illuminate\Http\Response
+     */
+    public function editEmail()
+    {
+        return view('user.edit-email')->with('user', Auth::user());
+    }
+
+    /**
+     * Show the password change form for the logged user.
+     * @return \Illuminate\Http\Response
+     */
+    public function editPassword()
+    {
+        return view('user.edit-password')->with('user', Auth::user());
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateUserRequest $request)
+    {
+        $this->fillUser($request->all());
+        return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateEmail(UpdateUserEmailRequest $request)
     {
-        //
+        $this->fillUser($request->all(), true);
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(UpdateUserPasswordRequest $request)
+    {
+        $data = $request->all();
+        $data['password'] = bcrypt($request->newpassword);
+
+        $this->fillUser($data);
+        return redirect()->back();
+    }
+
+
+    private function fillUser($requestArray, $resetEmail = false)
+    {
+        $user = User::findOrFail($requestArray['id']);
+        $user->fill($requestArray);
+        $user->save();
+
+        if ($resetEmail) {
+            $user->unconfirmEmail();
+            $user->sendEmailVerification();
+        }
     }
 
 }

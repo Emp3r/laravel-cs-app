@@ -20,5 +20,8 @@ Route::post('heslo/reset', 'Auth\ResetPasswordController@reset');
 Route::get('uzivatel/nastaveni', 'UsersController@edit')->name('settings');
 Route::get('uzivatel/nastaveni/email', 'UsersController@editEmail')->name('settings.email');
 Route::get('uzivatel/nastaveni/heslo', 'UsersController@editPassword')->name('settings.password');
+
 Route::get('uzivatel/{user}', 'UsersController@show')->name('user.profile');
-Route::put('uzivatel/{user}', 'UsersController@update')->name('user.update');
+Route::put('uzivatel/nastaveni', 'UsersController@update')->name('user.update');
+Route::put('uzivatel/nastaveni/email', 'UsersController@updateEmail')->name('user.update.email');
+Route::put('uzivatel/nastaveni/heslo', 'UsersController@updatePassword')->name('user.update.password');

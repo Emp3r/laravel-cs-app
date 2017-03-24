@@ -6,6 +6,7 @@ Implements:
 
 - User e-mail verification
 - Enhanced User model
+- User profile show + edit (with template files)
 - Customized e-mail templates
 - Translated validation error messages
 - Translated other stuff
@@ -13,6 +14,5 @@ Implements:
 
 Todo:
 
-- User Profile show + edit
 - Uploading avatar
 - Add forbidden user names

@@ -63,6 +63,13 @@ class User extends Authenticatable
         $this->save();
     }
 
+    public function unconfirmEmail()
+    {
+        $this->verified = false;
+        $this->token = str_random(30);
+        $this->save();
+    }
+
     /**
      * Re-send the e-mail verifiacion (if not verified from welcome mail).
      * @return void
