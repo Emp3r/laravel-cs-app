@@ -36,15 +36,19 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ route('user.profile', Auth::user()->slug) }}">Profil</a>
+                                <a href="{{ route('user.profile', Auth::user()->slug) }}">
+                                    <i class="glyphicon glyphicon-user"></i> Profil
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('settings') }}">Nastavení</a>
+                                <a href="{{ route('settings') }}">
+                                    <i class="glyphicon glyphicon-cog"></i> Nastavení
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Odhlásit se
+                                    <i class="glyphicon glyphicon-log-out"></i> Odhlásit se
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}

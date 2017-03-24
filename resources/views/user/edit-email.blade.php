@@ -25,7 +25,7 @@
                             @if ($user->verified)
                                 Ano
                             @else
-                                Ne &nbsp; (<a href="">Přeposlat ověřovací zprávu</a>)
+                                Ne
                             @endif
                             </div>
                         </div>

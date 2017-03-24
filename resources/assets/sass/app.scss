@@ -18,3 +18,10 @@
         margin: 16px 0;
     }
 }
+
+.navbar-right {
+    .dropdown-menu li {
+        a { padding-left: 14px; }
+        i { margin-right: 8px; }
+    }
+}

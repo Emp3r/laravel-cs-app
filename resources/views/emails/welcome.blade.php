@@ -12,7 +12,7 @@ Ověřit e-mail
 @endcomponent
 
 @component('mail::panel')
-{{ config('app.name') }} je místo, kde se hledají a hodnotí recepty. Jen napište, co jste našel v ledničce, ve spíži, nebo třeba ve sklepě a zjistěte si recepty jídel, které z toho můžete vyrobit!
+{{ config('app.name') }} je místo, kde se můžete zaregistrovat a upravovat svůj uživateslký profil, a to vše v češtině.
 @endcomponent
 
 Děkujeme,<br>
