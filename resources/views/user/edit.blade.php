@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Nastavení</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('user.update') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
@@ -52,6 +52,24 @@
                                 <span class="help-block helper-bio">
                                     Zbývá <span>140</span> znaků
                                 </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                            <label for="avatar" class="col-md-4 control-label">Profilový obrázek</label>
+                            <div class="col-md-6 info">
+                                @if ($user->avatar)
+                                    <img src="{{ $user->avatarPath() }}" alt="" class="avatar-img">
+                                    <span class="help-block">
+                                        <strong>{{ $user->avatarPath() }}</strong>
+                                    </span>
+                                @endif
+                                <input type="file" name="avatar" id="avatar">
+                                @if ($errors->has('avatar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

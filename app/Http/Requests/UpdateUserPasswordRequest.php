@@ -18,8 +18,7 @@ class UpdateUserPasswordRequest extends FormRequest
     public function authorize()
     {
         return User::where('id', $this->id)
-                   ->where('id', Auth::id())
-                   ->exists();
+                   ->where('id', Auth::id())->exists();
     }
 
     /**

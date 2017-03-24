@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UpdateUserEmailRequest;
 use App\Http\Requests\UpdateUserPasswordRequest;
@@ -65,7 +66,18 @@ class UsersController extends Controller
      */
     public function update(UpdateUserRequest $request)
     {
-        $this->fillUser($request->all());
+        $user = Auth::user();
+        $user->fill($request->all());
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // upload avatar image
+            Image::make($avatar)->resize(240, 240)->save(public_path('/img/avatars/'.$filename));
+            $user->avatar = $filename;
+        }
+        $user->save();
+
         return redirect()->back();
     }
 
@@ -76,7 +88,13 @@ class UsersController extends Controller
      */
     public function updateEmail(UpdateUserEmailRequest $request)
     {
-        $this->fillUser($request->all(), true);
+        $user = Auth::user();
+        $user->fill($requestArray);
+        $user->save();
+
+        $user->unconfirmEmail();
+        $user->sendEmailVerification();
+
         return redirect()->back();
     }
 
@@ -90,21 +108,11 @@ class UsersController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->newpassword);
 
-        $this->fillUser($data);
-        return redirect()->back();
-    }
-
-
-    private function fillUser($requestArray, $resetEmail = false)
-    {
-        $user = User::findOrFail($requestArray['id']);
-        $user->fill($requestArray);
+        $user = Auth::user();
+        $user->fill($data);
         $user->save();
 
-        if ($resetEmail) {
-            $user->unconfirmEmail();
-            $user->sendEmailVerification();
-        }
+        return redirect()->back();
     }
 
 }

@@ -14,7 +14,7 @@ class User extends Authenticatable
     use Notifiable, SoftDeletes;
 
     /**
-     * The attributes that are mass assignable.
+     * The user attributes that are mass assignable.
      * @var array
      */
     protected $fillable = [
@@ -22,16 +22,15 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The user attributes that should be hidden for arrays.
      * @var array
      */
     protected $hidden = [
         'password', 'remember_token', 'token',
     ];
 
-
     /**
-     * Every user has one of roles.
+     * Every user has one of the roles (instance of UserRole).
      * @return void
      */
     public function role()
@@ -39,21 +38,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserRole');
     }
 
-
     /**
-     * Boot the model. When creating instance, add a token for email verification.
-     * @return void
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function ($user) {
-            $user->token = str_random(30);
-        });
-    }
-
-    /**
-     * Confirm the users email address.
+     * Verify the user's email address.
      * @return void
      */
     public function confirmEmail()
@@ -63,11 +49,27 @@ class User extends Authenticatable
         $this->save();
     }
 
+    /**
+     * Unverify the user's email address.
+     * @return void
+     */
     public function unconfirmEmail()
     {
         $this->verified = false;
         $this->token = str_random(30);
         $this->save();
+    }
+
+    /**
+     * Boot the model. When creating an instance, add a token for email verification.
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($user) {
+            $user->token = str_random(30);
+        });
     }
 
     /**
@@ -88,6 +90,12 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         Mail::to($this)->send(new ResetPassword($token));
+    }
+
+    public function avatarPath()
+    {
+        return '/img/avatars/'.$this->avatar;
+        // return public_path('img/avatars/'.$this->avatar);
     }
 
 }
