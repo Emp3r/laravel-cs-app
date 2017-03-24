@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Mail\Welcome;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'email' => 'required|email|max:255|unique:users',
             'name' => 'required|max:255',
-            'slug' => 'unique:users',
+            'slug' => 'unique:users|not_in:'.Lang::get('validation.forbidden_names'),
             'password' => 'required|min:6|confirmed',
         ]);
     }

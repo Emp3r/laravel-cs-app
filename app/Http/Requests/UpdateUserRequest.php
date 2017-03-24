@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
@@ -28,7 +29,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'slug' => 'required|max:10|alpha_dash|unique:users,slug,'.$this->id,
+            'slug' => 'required|max:10|alpha_dash|unique:users,slug,'.$this->id.'|not_in:'.Lang::get('validation.forbidden_names'),
             'bio' => 'max:140',
         ];
     }
@@ -47,6 +48,7 @@ class UpdateUserRequest extends FormRequest
             'slug.max' => 'Adresa profilu nesmí mít více než :max znaků.',
             'slug.alpha_dash' => 'Můžete použít pouze písmena, čísla a pomlčku.',
             'slug.unique' => 'Takto nazvaná adresa už je obsazená.',
+            'slug.not_in' => 'Takto nazvaná adresa je zakázaná.',
             'bio.max' => 'Povídání nesmí přesáhnout 140 znaků.',
         ];
     }
@@ -59,6 +61,7 @@ class UpdateUserRequest extends FormRequest
     public function prepareForValidation()
     {
         $input = array_map('trim', $this->all());
+        $input['slug'] = str_slug($input['slug']);
 
         if (!isset($input['bio']))
             $input['bio'] = '';

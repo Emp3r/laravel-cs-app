@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'forbidden_names'      => 'user,nastaveni,email,heslo',
+
     'accepted'             => ':attribute musí být přijato (zaškrtnuto).',
     'active_url'           => 'Hodnota v :attribute není URL adresa.',
     'after'                => ':attribute musí být datum až po :date.',
