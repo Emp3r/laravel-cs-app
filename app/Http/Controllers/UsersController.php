@@ -73,7 +73,7 @@ class UsersController extends Controller
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             // upload avatar image
-            Image::make($avatar)->resize(240, 240)->save(public_path('/img/avatars/'.$filename));
+            Image::make($avatar)->resize(120, 120)->save(public_path('/img/avatars/'.$filename));
             $user->avatar = $filename;
         }
         $user->save();

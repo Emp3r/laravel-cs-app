@@ -4,14 +4,14 @@
 
 // Variables
 @import "variables";
+@import "mixins";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 
 .avatar-img {
-    max-width: 120px;
-    max-height: 120px;
+    @include sizes(120px, 120px);
     border-radius: 50%;
 }
 
@@ -24,12 +24,15 @@
         margin: 16px 0;
     }
     .avatar-img {
-        max-width: 80px;
-        max-height: 80px;
+        @include sizes(80px, 80px);
     }
 }
 
 .navbar-right {
+    .avatar-img {
+        @include sizes(30px, 30px);
+        margin-right: 8px;
+    }
     .dropdown-menu li {
         a { padding-left: 14px; }
         i { margin-right: 8px; }

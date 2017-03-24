@@ -58,12 +58,7 @@
                         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                             <label for="avatar" class="col-md-4 control-label">Profilový obrázek</label>
                             <div class="col-md-6 info">
-                                @if ($user->avatar)
-                                    <img src="{{ $user->avatarPath() }}" alt="" class="avatar-img">
-                                    <span class="help-block">
-                                        <strong>{{ $user->avatarPath() }}</strong>
-                                    </span>
-                                @endif
+                                <img src="{{ $user->avatarPath() }}" alt="" class="avatar-img">
                                 <input type="file" name="avatar" id="avatar">
                                 @if ($errors->has('avatar'))
                                     <span class="help-block">
