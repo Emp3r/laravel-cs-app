@@ -36,4 +36,33 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ];
+    }
+
+    /**
+     * Get the password reset validation error messages.
+     *
+     * @return array
+     */
+    protected function validationErrorMessages()
+    {
+        return [
+            'email.required' => 'Zadejte vaši e-mailovou adresu.',
+            'password.required' => 'Zadejte nové heslo.',
+            'password.confirmed' => 'Zadané heslo se neshoduje s kontrolním.',
+            'password.min' => 'Heslo musí mít alespoň :min znaků.',
+        ];
+    }
 }

@@ -10,6 +10,10 @@
                 <div class="panel-body">
                     <p class="text-center">
                         <img src="{{ $user->avatarPath() }}" alt="" class="avatar-img">
+                        <h4 class="text-center">{{ $user->name }}</h4>
+                    </p>
+                    <p class="text-center">
+                        {{ $user->bio }}
                     </p>
                     <ul class="list-group">
                         <li class="list-group-item">Jméno: {{ $user->name }}</li>
