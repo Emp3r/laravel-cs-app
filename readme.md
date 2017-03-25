@@ -8,6 +8,7 @@ Implements:
 - Enhanced User model
 - User avatar
 - User profile show + full edit (with template files)
+- Flash messages for successful feedback
 - Customized e-mail templates
 - Translated validation error messages
 - Translated other stuff
