@@ -2,7 +2,7 @@
 
 Template for a Czech web app based on Laravel framework.
 
-Implements:
+#### Implements:
 
 - User e-mail verification
 - Enhanced User model
