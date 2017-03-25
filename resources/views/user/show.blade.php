@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     @if ($user->role->id > 1)
                         <p class="roles">
-                            <span class="label label-{{ $user->role->id > 2 ? 'info' : 'primary'}}">
+                            <span class="label label-{{ $user->role->id }}">
                                 {{ $user->role->name }}
                             </span>
                         </p>
