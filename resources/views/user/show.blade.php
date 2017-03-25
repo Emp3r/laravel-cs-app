@@ -2,24 +2,26 @@
 
 @section('content')
 
-<div class="container">
+<div class="container user-profile">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Profil uživatele</div>
+                {{-- <div class="panel-heading">Profil uživatele</div> --}}
                 <div class="panel-body">
-                    <p class="text-center">
+                    @if ($user->role->id > 1)
+                        <p class="roles">
+                            <span class="label label-{{ $user->role->id > 2 ? 'info' : 'primary'}}">
+                                {{ $user->role->name }}
+                            </span>
+                        </p>
+                    @endif
+                    <div class="text-center">
                         <img src="{{ $user->avatarPath() }}" alt="" class="avatar-img">
                         <h4 class="text-center">{{ $user->name }}</h4>
-                    </p>
-                    <p class="text-center">
+                    </div>
+                    <p class="text-center bio">
                         {{ $user->bio }}
                     </p>
-                    <ul class="list-group">
-                        <li class="list-group-item">Jméno: {{ $user->name }}</li>
-                        <li class="list-group-item">Email: {{ $user->email }}</li>
-                        <li class="list-group-item">Typ uživatele: {{ $user->role->name }}</li>
-                    </ul>
                 </div>
             </div>
         </div>

@@ -15,6 +15,29 @@
     border-radius: 50%;
 }
 
+.navbar-right {
+    .avatar-img {
+        @include sizes(30px, 30px);
+        margin-right: 8px;
+    }
+    .dropdown-menu li {
+        a { padding-left: 14px; }
+        i { margin-right: 8px; }
+    }
+}
+
+.user-profile {
+    .roles {
+        position: absolute;
+    }
+    .bio {
+        margin-bottom: 16px;
+    }
+    .avatar-img {
+        margin: 16px auto;
+    }
+}
+
 .form-group {
     .info {
         padding-top:7px
@@ -25,16 +48,5 @@
     }
     .avatar-img {
         @include sizes(80px, 80px);
-    }
-}
-
-.navbar-right {
-    .avatar-img {
-        @include sizes(30px, 30px);
-        margin-right: 8px;
-    }
-    .dropdown-menu li {
-        a { padding-left: 14px; }
-        i { margin-right: 8px; }
     }
 }
