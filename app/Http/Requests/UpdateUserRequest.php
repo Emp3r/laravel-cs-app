@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:30',
+            'name' => 'required|min:4|max:30',
             'slug' => 'required|min:2|max:10|alpha_dash|unique:users,slug,'.$this->id.'|not_in:'.Lang::get('validation.forbidden_names'),
             'bio' => 'max:140',
         ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -64,5 +65,19 @@ class ResetPasswordController extends Controller
             'password.confirmed' => 'Zadané heslo se neshoduje s kontrolním.',
             'password.min' => 'Heslo musí mít alespoň :min znaků.',
         ];
+    }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string  $response
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function sendResetResponse($response)
+    {
+        flash(Lang::get('passwords.reset'));
+
+        return redirect($this->redirectPath())
+                            ->with('status', trans($response));
     }
 }

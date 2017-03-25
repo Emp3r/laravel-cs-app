@@ -26,6 +26,25 @@
     }
 }
 
+.panel {
+    .alert {
+        margin: 16px;
+    }
+}
+
+.form-group {
+    .info {
+        padding-top:7px
+    }
+    button {
+        padding: 6px 16px;
+        margin: 16px 0;
+    }
+    .avatar-img {
+        @include sizes(80px, 80px);
+    }
+}
+
 .user-profile {
     .roles {
         position: absolute;
@@ -45,17 +64,4 @@
 }
 .label-3 {
     background-color: mix($gray-light, $brand-primary, 50%);
-}
-
-.form-group {
-    .info {
-        padding-top:7px
-    }
-    button {
-        padding: 6px 16px;
-        margin: 16px 0;
-    }
-    .avatar-img {
-        @include sizes(80px, 80px);
-    }
 }

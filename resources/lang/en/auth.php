@@ -16,4 +16,14 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'logged' => 'You have been signed in.',
+    'registered' => 'You have been successfully signed up.',
+    'verified' => 'Your e-mail address has been verified.',
+
+    'settings' => [
+        'user_saved' => 'Successfully updated.',
+        'email_saved' => 'New e-mail was successfully updated.',
+        'password_saved' => 'New password was successfully updated.',
+    ],
+
 ];

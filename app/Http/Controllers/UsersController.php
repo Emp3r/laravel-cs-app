@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UpdateUserEmailRequest;
@@ -77,6 +78,7 @@ class UsersController extends Controller
             $user->avatar = $filename;
         }
         $user->save();
+        flash(Lang::get('auth.settings.user_saved'));
 
         return redirect()->back();
     }
@@ -89,11 +91,12 @@ class UsersController extends Controller
     public function updateEmail(UpdateUserEmailRequest $request)
     {
         $user = Auth::user();
-        $user->fill($requestArray);
+        $user->fill($request->all());
         $user->save();
 
         $user->unconfirmEmail();
         $user->sendEmailVerification();
+        flash(Lang::get('auth.settings.email_saved'));
 
         return redirect()->back();
     }
@@ -111,6 +114,7 @@ class UsersController extends Controller
         $user = Auth::user();
         $user->fill($data);
         $user->save();
+        flash(Lang::get('auth.settings.password_saved'));
 
         return redirect()->back();
     }

@@ -16,4 +16,14 @@ return [
     'failed' => 'Chybně zadané heslo nebo e-malová adresa.',
     'throttle' => 'Provedli jste až moc nepovedených pokusů. Zkuste to znovu za :seconds sekund.',
 
+    'logged' => 'Byli jste úspěšně přihlášeni.',
+    'registered' => 'Úspěšně jste se zaregistrovali.',
+    'verified' => 'Vaše e-mailová adresa byla ověřena.',
+
+    'settings' => [
+        'user_saved' => 'Úspěšně uloženo.',
+        'email_saved' => 'Nový e-mail byl úspěšně uložen.',
+        'password_saved' => 'Nové heslo bylo úspěšně uloženo.',
+    ],
+
 ];

@@ -82,6 +82,7 @@ class RegisterController extends Controller
         ]);
 
         Mail::to($user)->send(new Welcome($user));
+        flash(Lang::get('auth.registered'));
 
         return $user;
     }
@@ -95,8 +96,8 @@ class RegisterController extends Controller
     public function confirmEmail($token)
     {
         User::whereToken($token)->firstOrFail()->confirmEmail();
+        flash(Lang::get('auth.verified'));
 
-        // flash('You are now confirmed. Please login.');
         return redirect('/');
     }
 

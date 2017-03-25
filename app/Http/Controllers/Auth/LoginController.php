@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -55,5 +56,17 @@ class LoginController extends Controller
             'email.email' => 'E-mailová adresa je ve špatném formátu.',
             'password.required' => 'Zadejte své heslo.',
         ]);
+    }
+
+    /**
+    * The user has been authenticated.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  mixed  $user
+    * @return mixed
+    */
+    protected function authenticated(Request $request, $user)
+    {
+        flash(Lang::get('auth.logged'));
     }
 }
