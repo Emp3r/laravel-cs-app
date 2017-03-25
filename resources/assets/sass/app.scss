@@ -15,6 +15,15 @@
     border-radius: 50%;
 }
 
+.navbar-brand {
+    height: 58px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 20px;
+}
+.navbar-main {
+    li a { line-height: 30px; }
+}
 .navbar-right {
     .avatar-img {
         @include sizes(30px, 30px);
